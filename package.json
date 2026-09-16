@@ -1,0 +1,30 @@
+{
+  "name": "sconnect-pro",
+  "version": "1.0.0",
+  "description": "Plateforme de gestion sportive & associative pour une Direction municipale des sports.\r Prototype full stack **Node.js natif + PostgreSQL**, sans framework monolithique (pas d'Express, pas d'ORM).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boutainajad/Sconnect-Pro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/boutainajad/Sconnect-Pro/issues"
+  },
+  "homepage": "https://github.com/boutainajad/Sconnect-Pro#readme",
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "finalhandler": "^2.1.1",
+    "find-my-way": "^9.9.0",
+    "pg": "^8.23.0",
+    "serve-static": "^2.2.1"
+  }
+}
