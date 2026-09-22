@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: 'Associations' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Associations partenaires</h1>
+
+  <a href="/associations/new" class="btn">+ Nouvelle association</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Contact</th>
+        <th>Telephone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% associations.forEach(function(a) { %>
+        <tr>
+          <td><%= a.id %></td>
+          <td><%= a.name %></td>
+          <td><%= a.contact_name %></td>
+          <td><%= a.phone %></td>
+          <td>
+            <a href="/associations/<%= a.id %>">Voir</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

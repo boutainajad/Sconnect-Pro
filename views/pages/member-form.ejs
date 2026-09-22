@@ -1,0 +1,47 @@
+<%- include('../partials/header', { title: 'Nouvel adherent' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Nouvel adherent</h1>
+
+  <form method="POST" action="/members">
+    <label>Prenom :
+      <input type="text" name="first_name" required>
+    </label>
+
+    <label>Nom :
+      <input type="text" name="last_name" required>
+    </label>
+
+    <label>Date de naissance :
+      <input type="date" name="birth_date" required>
+    </label>
+
+    <label>Email :
+      <input type="email" name="email">
+    </label>
+
+    <label>Telephone :
+      <input type="text" name="phone">
+    </label>
+
+    <label>Date certificat medical :
+      <input type="date" name="medical_certificate_date">
+    </label>
+
+    <label>Famille :
+      <select name="family_id">
+        <option value="">-- Aucune --</option>
+        <% families.forEach(function(f) { %>
+          <option value="<%= f.id %>"><%= f.family_code %></option>
+        <% }); %>
+      </select>
+    </label>
+
+    <button type="submit">Enregistrer</button>
+  </form>
+
+  <a href="/members">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,45 @@
+<%- include('../partials/header', { title: 'Adherents' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Liste des adherents</h1>
+
+  <a href="/members/new" class="btn">+ Nouvel adherent</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Age</th>
+        <th>Categorie</th>
+        <th>Famille</th>
+        <th>Statut medical</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% members.forEach(function(m) { %>
+        <tr>
+          <td><%= m.id %></td>
+          <td><%= m.first_name %> <%= m.last_name %></td>
+          <td><%= m.age %></td>
+          <td><%= m.category %></td>
+          <td><%= m.family_code || '-' %></td>
+          <td>
+            <% if (m.medical_status === 'valid') { %>
+              <span class="badge-ok">Valide</span>
+            <% } else { %>
+              <span class="badge-ko">Non conforme</span>
+            <% } %>
+          </td>
+          <td>
+            <a href="/members/<%= m.id %>">Voir</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

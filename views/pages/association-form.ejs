@@ -1,0 +1,30 @@
+<%- include('../partials/header', { title: 'Nouvelle association' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Nouvelle association</h1>
+
+  <form method="POST" action="/associations">
+    <label>Nom :
+      <input type="text" name="name" required>
+    </label>
+
+    <label>Contact :
+      <input type="text" name="contact_name">
+    </label>
+
+    <label>Telephone :
+      <input type="text" name="phone">
+    </label>
+
+    <label>Email :
+      <input type="email" name="email">
+    </label>
+
+    <button type="submit">Enregistrer</button>
+  </form>
+
+  <a href="/associations">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: 'Nouvelle salle' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Nouvelle salle</h1>
+
+  <form method="POST" action="/facilities">
+    <label>Nom :
+      <input type="text" name="name" required>
+    </label>
+
+    <label>Type :
+      <input type="text" name="type" placeholder="Gymnase, Piscine...">
+    </label>
+
+    <label>Adresse :
+      <input type="text" name="address">
+    </label>
+
+    <label>Capacite ERP :
+      <input type="number" name="erp_capacity" required>
+    </label>
+
+    <label>
+      <input type="checkbox" name="is_divisible">
+      Divisibles (demi-terrain)
+    </label>
+
+    <button type="submit">Enregistrer</button>
+  </form>
+
+  <a href="/facilities">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

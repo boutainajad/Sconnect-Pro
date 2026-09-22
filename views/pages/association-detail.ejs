@@ -1,0 +1,13 @@
+<%- include('../partials/header', { title: 'Detail association' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1><%= association.name %></h1>
+  <p>Contact : <%= association.contact_name %></p>
+  <p>Telephone : <%= association.phone %></p>
+  <p>Email : <%= association.email %></p>
+
+  <a href="/associations">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

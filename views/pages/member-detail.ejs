@@ -1,0 +1,18 @@
+<%- include('../partials/header', { title: 'Detail adherent' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1><%= member.first_name %> <%= member.last_name %></h1>
+
+  <p>Date de naissance : <%= member.birth_date %></p>
+  <p>Age : <%= member.age %> ans</p>
+  <p>Categorie : <%= member.category %></p>
+  <p>Email : <%= member.email %></p>
+  <p>Telephone : <%= member.phone %></p>
+  <p>Certificat medical : <%= member.medical_certificate_date %></p>
+  <p>Statut medical : <strong><%= member.medical_status %></strong></p>
+
+  <a href="/members">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

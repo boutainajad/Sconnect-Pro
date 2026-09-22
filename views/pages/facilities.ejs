@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: 'Salles' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Liste des salles</h1>
+
+  <a href="/facilities/new" class="btn">+ Nouvelle salle</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Capacite ERP</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% facilities.forEach(function(f) { %>
+        <tr>
+          <td><%= f.id %></td>
+          <td><%= f.name %></td>
+          <td><%= f.type %></td>
+          <td><%= f.erp_capacity %></td>
+          <td>
+            <a href="/facilities/<%= f.id %>">Voir</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

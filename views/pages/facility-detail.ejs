@@ -1,0 +1,14 @@
+<%- include('../partials/header', { title: 'Detail salle' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1><%= facility.name %></h1>
+  <p>Type : <%= facility.type %></p>
+  <p>Adresse : <%= facility.address %></p>
+  <p>Capacite ERP : <%= facility.erp_capacity %></p>
+  <p>Divisible : <%= facility.is_divisible ? 'Oui' : 'Non' %></p>
+
+  <a href="/facilities">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>
