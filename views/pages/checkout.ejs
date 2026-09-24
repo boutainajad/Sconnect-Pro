@@ -1,0 +1,98 @@
+<%- include('../partials/header', { title: 'Devis' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Devis d'inscription</h1>
+
+  <div class="devis-info">
+    <p><strong>Adherent :</strong> <%= member.first_name %> <%= member.last_name %></p>
+    <p><strong>Activite :</strong> <%= activity.name %></p>
+    <p><strong>Salle :</strong> <%= activity.facility_name %></p>
+  </div>
+
+  <table class="devis">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Prix de base</td>
+        <td><%= details.basePrice.toFixed(2) %> EUR</td>
+      </tr>
+
+      <% if (details.residentDiff !== 0) { %>
+        <tr>
+          <td>Majoration non-resident (+35%)</td>
+          <td>+<%= details.residentDiff.toFixed(2) %> EUR</td>
+        </tr>
+      <% } %>
+
+      <% if (details.familyDiff !== 0) { %>
+        <tr>
+          <td>Reduction fratrie</td>
+          <td><%= details.familyDiff.toFixed(2) %> EUR</td>
+        </tr>
+      <% } %>
+
+      <% if (details.qfDiff !== 0) { %>
+        <tr>
+          <td>Reduction quotient familial</td>
+          <td><%= details.qfDiff.toFixed(2) %> EUR</td>
+        </tr>
+      <% } %>
+
+      <% if (details.passDiff !== 0) { %>
+        <tr>
+          <td>Pass'Sport</td>
+          <td><%= details.passDiff.toFixed(2) %> EUR</td>
+        </tr>
+      <% } %>
+
+      <tr class="total">
+        <td><strong>Total a payer</strong></td>
+        <td><strong><%= details.finalPrice.toFixed(2) %> EUR</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Echeancier 3x sans frais</h2>
+  <table class="echeancier">
+    <thead>
+      <tr>
+        <th>Echeance</th>
+        <th>Date</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Jour J</td>
+        <td><%= installments[0].toFixed(2) %> EUR</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jour J + 30</td>
+        <td><%= installments[1].toFixed(2) %> EUR</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Jour J + 60</td>
+        <td><%= installments[2].toFixed(2) %> EUR</td>
+      </tr>
+      <tr class="total">
+        <td colspan="2"><strong>Total</strong></td>
+        <td><strong><%= details.finalPrice.toFixed(2) %> EUR</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <a href="/activities" class="btn">Retour</a>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

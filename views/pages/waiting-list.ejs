@@ -1,0 +1,43 @@
+<%- include('../partials/header', { title: "File d'attente" }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>File d'attente priorisee</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Adherent</th>
+        <th>Activite</th>
+        <th>Score</th>
+        <th>Statut</th>
+        <th>Deadline</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entries.forEach(function(e) { %>
+        <tr>
+          <td><%= e.id %></td>
+          <td><%= e.first_name %> <%= e.last_name %></td>
+          <td><%= e.activity_name %></td>
+          <td><%= e.priority_score %></td>
+          <td><%= e.status %></td>
+          <td><%= e.deadline_confirmation || '-' %></td>
+          <td>
+            <% if (e.status === 'promoted_pending') { %>
+              <form method="POST" action="/waiting-list/<%= e.id %>/confirm" style="display:inline">
+                <button type="submit">Confirmer</button>
+              </form>
+            <% } else { %>
+              -
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

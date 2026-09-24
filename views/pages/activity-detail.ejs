@@ -1,0 +1,19 @@
+<%- include('../partials/header', { title: 'Detail activite' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1><%= activity.name %></h1>
+
+  <p><strong>Association :</strong> <%= activity.association_name || '-' %></p>
+  <p><strong>Salle :</strong> <%= activity.facility_name %></p>
+  <p><strong>Jour :</strong> <%= activity.day_of_week %></p>
+  <p><strong>Horaire :</strong> <%= activity.start_time %> - <%= activity.end_time %></p>
+  <p><strong>Prix de base :</strong> <%= parseFloat(activity.base_price).toFixed(2) %> EUR</p>
+  <p><strong>Categorie :</strong> <%= activity.age_category %></p>
+  <p><strong>Capacite :</strong> <%= activity.confirmed_count %> / <%= activity.max_capacity %></p>
+  <p><strong>Sport a risque :</strong> <%= activity.is_risk_sport ? 'Oui' : 'Non' %></p>
+
+  <a href="/activities">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

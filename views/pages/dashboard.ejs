@@ -1,11 +1,98 @@
-<%- include('../partials/header', { title: 'Accueil' }) %>
+<%- include('../partials/header', { title: 'Tableau de bord' }) %>
 <%- include('../partials/navbar') %>
 
 <main>
-  <h1>Accueil - SportConnect Pro</h1>
-  <p>Bienvenue <%= userName %></p>
-  <p>Nombre d'activites : <strong><%= activitiesCount %></strong></p>
-  <p>Nombre d'adherents : <strong><%= membersCount %></strong></p>
+  <h1>Tableau de bord</h1>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Adherents</div>
+      <div class="kpi-value"><%= stats.members %></div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Salles</div>
+      <div class="kpi-value"><%= stats.facilities %></div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Associations</div>
+      <div class="kpi-value"><%= stats.associations %></div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Activites</div>
+      <div class="kpi-value"><%= stats.activities %></div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">Inscriptions</div>
+      <div class="kpi-value"><%= stats.registrations %></div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-label">En attente</div>
+      <div class="kpi-value"><%= stats.waiting %></div>
+    </div>
+
+    <div class="kpi-card kpi-revenue">
+      <div class="kpi-label">Recettes</div>
+      <div class="kpi-value"><%= parseFloat(stats.revenue).toFixed(2) %> EUR</div>
+    </div>
+  </div>
+
+  <h2>Taux de remplissage des activites</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Activite</th>
+        <th>Inscrits</th>
+        <th>Capacite</th>
+        <th>Taux</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% activities.forEach(function(a) { %>
+        <tr>
+          <td><%= a.name %></td>
+          <td><%= a.confirmed_count %></td>
+          <td><%= a.max_capacity %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" style="width: <%= a.fill_rate || 0 %>%"></div>
+              <span><%= a.fill_rate || 0 %>%</span>
+            </div>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <h2>Dernieres inscriptions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Adherent</th>
+        <th>Activite</th>
+        <th>Prix</th>
+        <th>Statut</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% recent.forEach(function(r) { %>
+        <tr>
+          <td><%= r.id %></td>
+          <td><%= r.first_name %> <%= r.last_name %></td>
+          <td><%= r.activity_name %></td>
+          <td><%= parseFloat(r.final_price).toFixed(2) %> EUR</td>
+          <td><%= r.status %></td>
+          <td><%= new Date(r.registration_date).toLocaleDateString('fr-FR') %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
 </main>
 
 <%- include('../partials/footer') %>

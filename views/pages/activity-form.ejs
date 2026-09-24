@@ -1,0 +1,92 @@
+<%- include('../partials/header', { title: 'Nouvelle activite' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Nouvelle activite</h1>
+
+  <% if (error) { %>
+    <div class="alert-error"><%= error %></div>
+  <% } %>
+
+  <form method="POST" action="/activities">
+    <label>Nom :
+      <input type="text" name="name" required>
+    </label>
+
+    <label>Association :
+      <select name="association_id">
+        <option value="">-- Aucune --</option>
+        <% associations.forEach(function(a) { %>
+          <option value="<%= a.id %>"><%= a.name %></option>
+        <% }); %>
+      </select>
+    </label>
+
+    <label>Salle :
+      <select name="facility_id" required>
+        <option value="">-- Choisir --</option>
+        <% facilities.forEach(function(f) { %>
+          <option value="<%= f.id %>"><%= f.name %> (ERP <%= f.erp_capacity %>)</option>
+        <% }); %>
+      </select>
+    </label>
+
+    <label>Prix de base :
+      <input type="number" step="0.01" name="base_price" required>
+    </label>
+
+    <label>Capacite max :
+      <input type="number" name="max_capacity" required>
+    </label>
+
+    <label>Jour :
+      <select name="day_of_week" required>
+        <option value="Lundi">Lundi</option>
+        <option value="Mardi">Mardi</option>
+        <option value="Mercredi">Mercredi</option>
+        <option value="Jeudi">Jeudi</option>
+        <option value="Vendredi">Vendredi</option>
+        <option value="Samedi">Samedi</option>
+        <option value="Dimanche">Dimanche</option>
+      </select>
+    </label>
+
+    <label>Heure debut :
+      <input type="time" name="start_time" required>
+    </label>
+
+    <label>Heure fin :
+      <input type="time" name="end_time" required>
+    </label>
+
+    <label>Categorie d'age :
+      <select name="age_category">
+        <option value="Baby">Baby</option>
+        <option value="U9">U9</option>
+        <option value="U11">U11</option>
+        <option value="U13">U13</option>
+        <option value="U15">U15</option>
+        <option value="U18">U18</option>
+        <option value="Senior">Senior</option>
+        <option value="Veteran">Veteran</option>
+        <option value="Tous">Tous publics</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" name="is_all_public">
+      Tous publics
+    </label>
+
+    <label>
+      <input type="checkbox" name="is_risk_sport">
+      Sport a risque (Boxe, Plongee, Rugby)
+    </label>
+
+    <button type="submit">Enregistrer</button>
+  </form>
+
+  <a href="/activities">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,37 @@
+<%- include('../partials/header', { title: 'Nouvelle inscription' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Nouvelle inscription</h1>
+
+  <form method="POST" action="/registrations">
+    <label>Adherent :
+      <select name="member_id" required>
+        <option value="">-- Choisir --</option>
+        <% members.forEach(function(m) { %>
+          <option value="<%= m.id %>"><%= m.first_name %> <%= m.last_name %></option>
+        <% }); %>
+      </select>
+    </label>
+
+    <label>Activite :
+      <select name="activity_id" required>
+        <option value="">-- Choisir --</option>
+        <% activities.forEach(function(a) { %>
+          <option value="<%= a.id %>"><%= a.name %> (<%= a.base_price %> EUR)</option>
+        <% }); %>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" name="has_pass_sport">
+      Beneficiaire Pass'Sport
+    </label>
+
+    <button type="submit">Inscrire</button>
+  </form>
+
+  <a href="/registrations">Retour</a>
+</main>
+
+<%- include('../partials/footer') %>

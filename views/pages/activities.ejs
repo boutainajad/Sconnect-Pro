@@ -1,0 +1,39 @@
+<%- include('../partials/header', { title: 'Activites' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Liste des activites</h1>
+
+  <a href="/activities/new" class="btn">+ Nouvelle activite</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Club</th>
+        <th>Salle</th>
+        <th>Jour</th>
+        <th>Horaire</th>
+        <th>Capacite</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% activities.forEach(function(a) { %>
+        <tr>
+          <td><%= a.id %></td>
+          <td><%= a.name %></td>
+          <td><%= a.association_name || '-' %></td>
+          <td><%= a.facility_name %></td>
+          <td><%= a.day_of_week %></td>
+          <td><%= a.start_time %> - <%= a.end_time %></td>
+          <td><%= a.max_capacity %></td>
+          <td><a href="/activities/<%= a.id %>">Voir</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

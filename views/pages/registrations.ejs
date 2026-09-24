@@ -1,0 +1,39 @@
+<%- include('../partials/header', { title: 'Inscriptions' }) %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <h1>Inscriptions</h1>
+
+  <a href="/registrations/new" class="btn">+ Nouvelle inscription</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Adherent</th>
+        <th>Activite</th>
+        <th>Prix final</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% registrations.forEach(function(r) { %>
+        <tr>
+          <td><%= r.id %></td>
+          <td><%= r.first_name %> <%= r.last_name %></td>
+          <td><%= r.activity_name %></td>
+          <td><%= parseFloat(r.final_price).toFixed(2) %> EUR</td>
+          <td><%= r.status %></td>
+          <td>
+            <form method="POST" action="/registrations/<%= r.id %>/cancel" style="display:inline">
+              <button type="submit">Annuler</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>
