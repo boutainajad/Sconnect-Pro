@@ -340,3 +340,130 @@ h2 {
   border: 1px solid #f5c6cb;
   margin-bottom: 20px;
 }
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .navbar a {
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  main {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .kpi-card {
+    padding: 15px;
+  }
+
+  .kpi-value {
+    font-size: 22px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+  }
+
+  th {
+    font-size: 11px;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  form {
+    padding: 20px 15px;
+  }
+
+  form input[type="text"],
+  form input[type="number"],
+  form input[type="email"],
+  form input[type="date"],
+  form select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .error-code {
+    font-size: 80px;
+  }
+
+  .error-title {
+    font-size: 22px;
+  }
+
+  .error-message {
+    font-size: 14px;
+  }
+
+  .progress {
+    height: 16px;
+  }
+
+  .progress span {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar a {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  table {
+    font-size: 11px;
+  }
+
+  th, td {
+    padding: 6px 4px;
+  }
+
+  .kpi-value {
+    font-size: 20px;
+  }
+
+  .error-code {
+    font-size: 60px;
+  }
+}
