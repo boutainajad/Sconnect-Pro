@@ -93,7 +93,6 @@ CREATE TABLE payments (
   paid_at TIMESTAMP
 );
 
--- Index
 CREATE INDEX idx_members_family ON members(family_id);
 CREATE INDEX idx_activities_facility ON activities(facility_id);
 CREATE INDEX idx_registrations_activity ON registrations(activity_id, status);
